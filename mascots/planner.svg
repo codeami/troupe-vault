@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="The Planner, placeholder shape">
+  <ellipse cx="100" cy="182" rx="70" ry="8" fill="#000" opacity=".1"/>
+  <rect x="28" y="96" width="144" height="82" rx="41" fill="#8a7aa0"/>
+  <path d="M70 76 L86 90 L118 58" fill="none" stroke="#6d5f82" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="84" cy="132" r="11" fill="#fffaf2"/>
+  <circle cx="116" cy="132" r="11" fill="#fffaf2"/>
+  <circle cx="85" cy="135" r="5" fill="#1d1a16"/>
+  <circle cx="117" cy="135" r="5" fill="#1d1a16"/>
+</svg>

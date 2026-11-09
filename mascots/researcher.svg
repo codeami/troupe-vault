@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="The Researcher, placeholder shape">
+  <ellipse cx="100" cy="182" rx="56" ry="8" fill="#000" opacity=".1"/>
+  <path d="M146 140 L170 170" stroke="#4f6b58" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="96" cy="106" r="66" fill="#6f8f7a"/>
+  <circle cx="80" cy="100" r="11" fill="#fffaf2"/>
+  <circle cx="112" cy="100" r="11" fill="#fffaf2"/>
+  <circle cx="81" cy="103" r="5" fill="#1d1a16"/>
+  <circle cx="113" cy="103" r="5" fill="#1d1a16"/>
+</svg>
