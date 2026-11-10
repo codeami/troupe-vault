@@ -1,7 +1,8 @@
 // Static checks for the site. Run with `npm test` (Node 18+, no dependencies).
 // Checks: page basics, every relative link and asset resolves, no root-absolute links
 // (the site lives under /troupe-vault/), only known outside hosts, placeholder links carry
-// ?v=vault, and the copy stays in shadow mode with no private names or hype words.
+// ?v=vault, the copy stays in shadow mode with no private names or hype words, the site is
+// waitlist only (no prices, pre-orders or refunds), and the six jobs hang off the Chief of Staff.
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,7 +20,7 @@ function walk(dir) {
 
 const pages = walk(root).filter((p) => p.endsWith('.html'));
 const cast = ['grocer', 'bill-clerk', 'librarian', 'researcher', 'poster', 'planner'];
-const allowedHosts = ['fonts.googleapis.com', 'fonts.gstatic.com', 'docs.google.com', 'placeholder-gumroad.gumroad.com'];
+const allowedHosts = ['fonts.googleapis.com', 'fonts.gstatic.com', 'docs.google.com'];
 const banned = [
   // shadow mode: what it does, never how
   'harness', 'subagent', 'sub-agent', 'routing', 'orchestrat', 'worker', 'model', 'llm', 'claude', 'gemini', 'openai',
@@ -29,6 +30,8 @@ const banned = [
   'firstmate', 'treehouse', 'artsys', '/users/', 'ts.net', 'lavish',
   // hype
   'revolution', 'supercharg', 'seamless', 'unleash', 'game-chang', 'cutting-edge', 'effortless', 'magic', 'powerful', 'ultimate', 'blazing',
+  // waitlist only: no prices, tiers, pre-orders or refunds
+  'pre-order', 'preorder', 'refund', '[price]', 'gumroad', 'per month', '/month', 'tier',
 ];
 
 const errors = [];
@@ -78,17 +81,26 @@ for (const [file, src] of html) {
   for (const word of banned) {
     if (text.includes(word)) fail(file, `banned word in copy: "${word}"`);
   }
+  const money = text.match(/[$€£]\s?\d/);
+  if (money) fail(file, `price in copy: "${money[0]}"`);
 }
 
 const index = html.get(join(root, 'index.html'));
+const chief = html.get(join(root, 'cast', 'chief-of-staff.html'));
 if (!index) errors.push('index.html is missing');
 else {
+  if (!index.includes('href="cast/chief-of-staff.html"')) errors.push('index.html: no link to cast/chief-of-staff.html');
   for (const name of cast) {
-    if (!index.includes(`href="cast/${name}.html"`)) errors.push(`index.html: no card link to cast/${name}.html`);
-    if (!html.has(join(root, 'cast', `${name}.html`))) errors.push(`cast/${name}.html is missing`);
+    if (!index.includes(`href="cast/${name}.html"`)) errors.push(`index.html: no link to cast/${name}.html`);
   }
-  if (!/gumroad\.com[^"]*\?v=vault/.test(index)) errors.push('index.html: no $1 pre-order link');
   if (!/docs\.google\.com\/forms[^"]*\?v=vault/.test(index)) errors.push('index.html: no join link');
+}
+if (!chief) errors.push('cast/chief-of-staff.html is missing');
+for (const name of cast) {
+  const page = html.get(join(root, 'cast', `${name}.html`));
+  if (!page) { errors.push(`cast/${name}.html is missing`); continue; }
+  if (chief && !chief.includes(`href="${name}.html"`)) errors.push(`cast/chief-of-staff.html: no link to ${name}.html`);
+  if (!page.includes('href="chief-of-staff.html"')) errors.push(`cast/${name}.html: no link back to chief-of-staff.html`);
 }
 
 if (errors.length) {

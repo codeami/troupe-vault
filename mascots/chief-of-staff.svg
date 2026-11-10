@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="The Chief of Staff, placeholder shape">
+  <ellipse cx="100" cy="182" rx="60" ry="8" fill="#000" opacity=".1"/>
+  <path d="M46 178 V92 Q46 44 100 44 Q154 44 154 92 V178 Z" fill="#5d7684"/>
+  <rect x="112" y="122" width="34" height="44" rx="4" fill="#efe6d6"/>
+  <rect x="121" y="117" width="16" height="9" rx="2" fill="#3f5361"/>
+  <path d="M119 138 H139 M119 147 H139 M119 156 H132" stroke="#9aa6ad" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="82" cy="96" r="11" fill="#fffaf2"/>
+  <circle cx="118" cy="96" r="11" fill="#fffaf2"/>
+  <circle cx="83" cy="99" r="5" fill="#1d1a16"/>
+  <circle cx="119" cy="99" r="5" fill="#1d1a16"/>
+</svg>
