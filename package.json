@@ -1,0 +1,9 @@
+{
+  "name": "troupe-vault",
+  "private": true,
+  "description": "ThoughtSignal, by Troupe Consulting: static site for GitHub Pages",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/check.mjs"
+  }
+}

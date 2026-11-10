@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="The Grocer, placeholder shape">
+  <ellipse cx="100" cy="182" rx="62" ry="8" fill="#000" opacity=".1"/>
+  <path d="M62 78 C62 40 138 40 138 78" fill="none" stroke="#9c6a32" stroke-width="9" stroke-linecap="round"/>
+  <path d="M38 76 H162 L148 170 Q146 178 138 178 H62 Q54 178 52 170 Z" fill="#c98f4a"/>
+  <circle cx="82" cy="118" r="11" fill="#fffaf2"/>
+  <circle cx="118" cy="118" r="11" fill="#fffaf2"/>
+  <circle cx="83" cy="121" r="5" fill="#1d1a16"/>
+  <circle cx="119" cy="121" r="5" fill="#1d1a16"/>
+</svg>
